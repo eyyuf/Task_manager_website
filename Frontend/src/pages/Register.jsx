@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
+import { UserPlus, ArrowRight } from 'lucide-react';
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -18,33 +19,43 @@ const Register = () => {
             await api.post('/auth/register', { name, email, password });
             navigate('/login');
         } catch (err) {
-            setError(err.response?.data?.message || 'Registration failed');
+            setError(err.response?.data?.message || 'Failed to create your account.');
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
-            <div className="card animate-fade-in" style={{ width: '100%', maxWidth: '400px' }}>
-                <h1 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.5rem' }}>Create Account</h1>
-                <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '0.875rem' }}>Join us to start managing your tasks efficiently.</p>
+        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f9fafb', padding: '2rem' }}>
+            <div className="card animate-up" style={{ width: '100%', maxWidth: '440px', border: 'none', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.08)' }}>
+                <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+                    <div style={{ width: '64px', height: '64px', backgroundColor: '#eff6ff', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: '#3b82f6' }}>
+                        <UserPlus size={32} />
+                    </div>
+                    <h1 style={{ fontSize: '1.75rem', fontWeight: '800', marginBottom: '0.5rem' }}>Create Account</h1>
+                    <p style={{ color: '#6b7280' }}>Join TaskFlow and start getting things done.</p>
+                </div>
 
-                {error && <div style={{ color: 'var(--error-color)', fontSize: '0.875rem', marginBottom: '1rem', background: '#fff5f5', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ffebeb' }}>{error}</div>}
+                {error && (
+                    <div style={{ backgroundColor: '#fef2f2', border: '1px solid #fee2e2', color: '#dc2626', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontSize: '0.875rem' }}>
+                        {error}
+                    </div>
+                )}
 
                 <form onSubmit={handleSubmit}>
-                    <div className="input-group">
-                        <label>Full Name</label>
+                    <div style={{ marginBottom: '1.25rem' }}>
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600' }}>Full Name</label>
                         <input
                             type="text"
-                            placeholder="John Doe"
+                            placeholder="Elon Musk"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
                         />
                     </div>
-                    <div className="input-group">
-                        <label>Email Address</label>
+
+                    <div style={{ marginBottom: '1.25rem' }}>
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600' }}>Email Address</label>
                         <input
                             type="email"
                             placeholder="name@company.com"
@@ -53,8 +64,9 @@ const Register = () => {
                             required
                         />
                     </div>
-                    <div className="input-group">
-                        <label>Password</label>
+
+                    <div style={{ marginBottom: '2rem' }}>
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600' }}>Password</label>
                         <input
                             type="password"
                             placeholder="••••••••"
@@ -63,13 +75,15 @@ const Register = () => {
                             required
                         />
                     </div>
-                    <button type="submit" className="btn-primary" style={{ width: '100%', marginTop: '0.5rem' }} disabled={loading}>
-                        {loading ? 'Creating account...' : 'Create Account'}
+
+                    <button type="submit" className="btn-black" style={{ width: '100%', padding: '0.875rem' }} disabled={loading}>
+                        <span>{loading ? 'Designing account...' : 'Get Started'}</span>
+                        {!loading && <ArrowRight size={18} />}
                     </button>
                 </form>
 
-                <p style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-                    Already have an account? <Link to="/login" style={{ color: 'var(--accent-color)', fontWeight: '500' }}>Sign in</Link>
+                <p style={{ marginTop: '2rem', textAlign: 'center', color: '#6b7280', fontSize: '0.875rem' }}>
+                    Already a user? <Link to="/login" style={{ color: '#000', fontWeight: '700', textDecoration: 'underline', textUnderlineOffset: '4px' }}>Sign in here</Link>
                 </p>
             </div>
         </div>
