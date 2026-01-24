@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { CheckCircle2, LogOut } from 'lucide-react';
+import '../styles/Components.css';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -18,16 +19,16 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '800', fontSize: '1.5rem' }}>
-                    <div style={{ color: '#3b82f6' }}>
+            <div className="container navbar-container">
+                <Link to="/" className="navbar-brand">
+                    <div className="brand-icon">
                         <CheckCircle2 size={28} />
                     </div>
-                    <span style={{ letterSpacing: '-0.025em' }}>Task<span style={{ color: '#3b82f6' }}>Flow</span></span>
+                    <span>Task<span className="brand-text-accent">Flow</span></span>
                 </Link>
 
                 {token && (
-                    <button onClick={handleLogout} className="btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem' }}>
+                    <button onClick={handleLogout} className="btn-outline navbar-logout-btn">
                         <LogOut size={16} />
                         <span>Sign Out</span>
                     </button>
@@ -38,3 +39,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

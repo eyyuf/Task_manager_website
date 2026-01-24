@@ -1,0 +1,53 @@
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.brand-icon {
+    color: #3b82f6;
+    display: flex;
+    align-items: center;
+}
+
+.brand-text-accent {
+    color: #3b82f6;
+}
+
+.navbar-logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem !important;
+}
+
+.footer-brand {
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.footer-link {
+    color: #9ca3af;
+    transition: color 0.2s;
+}
+
+.footer-link:hover {
+    color: #3b82f6;
+}

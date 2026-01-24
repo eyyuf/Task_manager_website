@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
 import { ArrowRight, Lock, Mail, Star } from 'lucide-react';
+import '../styles/Login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -27,91 +28,91 @@ const Login = () => {
     };
 
     return (
-        <div style={{ minHeight: '100vh', display: 'flex', backgroundColor: '#ffffff' }}>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '3rem' }} className="animate-up">
-                <div style={{ marginBottom: 'auto' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '800', fontSize: '1.25rem', color: '#000' }}>
-                        <div style={{ width: '32px', height: '32px', border: '3px solid #000', borderRadius: '8px' }}></div>
+        <div className="login-page">
+            <div className="login-form-side animate-up">
+                <div className="login-logo-container">
+                    <div className="login-logo">
+                        <div className="login-logo-box"></div>
                         <span>TaskFlow</span>
                     </div>
                 </div>
 
-                <div style={{ maxWidth: '400px', width: '100%', margin: '0 auto' }}>
-                    <h1 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '0.75rem', letterSpacing: '-0.02em' }}>Welcome back.</h1>
-                    <p style={{ color: '#6b7280', fontSize: '1.125rem', marginBottom: '2.5rem' }}>Login to your account to continue.</p>
+                <div className="login-main-content">
+                    <h1 className="login-title">Welcome back.</h1>
+                    <p className="login-subtitle">Login to your account to continue.</p>
 
                     {error && (
-                        <div style={{ backgroundColor: '#fef2f2', border: '1px solid #fee2e2', color: '#dc2626', padding: '0.875rem', borderRadius: '8px', marginBottom: '1.5rem', fontSize: '0.875rem' }}>
+                        <div className="login-error">
                             {error}
                         </div>
                     )}
 
                     <form onSubmit={handleSubmit}>
-                        <div style={{ marginBottom: '1.25rem' }}>
-                            <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600' }}>Email Address</label>
-                            <div style={{ position: 'relative' }}>
-                                <Mail style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af' }} size={18} />
+                        <div className="form-group">
+                            <label className="form-label">Email Address</label>
+                            <div className="input-wrapper">
+                                <Mail className="input-icon" size={18} />
                                 <input
                                     type="email"
                                     placeholder="name@company.com"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
-                                    style={{ paddingLeft: '3rem' }}
+                                    className="login-input"
                                 />
                             </div>
                         </div>
 
-                        <div style={{ marginBottom: '2rem' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                <label style={{ fontSize: '0.875rem', fontWeight: '600' }}>Password</label>
-                                <a href="#" style={{ fontSize: '0.875rem', color: '#3b82f6', fontWeight: '500' }}>Forgot password?</a>
+                        <div className="form-group-last">
+                            <div className="login-form-header">
+                                <label className="form-label">Password</label>
+                                <a href="#" className="forgot-password">Forgot password?</a>
                             </div>
-                            <div style={{ position: 'relative' }}>
-                                <Lock style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af' }} size={18} />
+                            <div className="input-wrapper">
+                                <Lock className="input-icon" size={18} />
                                 <input
                                     type="password"
                                     placeholder="••••••••"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
-                                    style={{ paddingLeft: '3rem' }}
+                                    className="login-input"
                                 />
                             </div>
                         </div>
 
-                        <button type="submit" className="btn-black" style={{ width: '100%', padding: '1rem' }} disabled={loading}>
+                        <button type="submit" className="btn-black login-btn" disabled={loading}>
                             <span>{loading ? 'Verifying...' : 'Sign In'}</span>
                             {!loading && <ArrowRight size={18} />}
                         </button>
                     </form>
 
-                    <p style={{ marginTop: '2.5rem', textAlign: 'center', color: '#6b7280', fontSize: '0.875rem' }}>
-                        Don't have an account? <Link to="/register" style={{ color: '#000', fontWeight: '700', textDecoration: 'underline', textUnderlineOffset: '4px' }}>Create one for free</Link>
+                    <p className="login-footer-text">
+                        Don't have an account? <Link to="/register" className="login-signup-link">Create one for free</Link>
                     </p>
                 </div>
 
-                <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
-                    <p style={{ color: '#9ca3af', fontSize: '0.75rem' }}>&copy; 2026 TaskFlow. All rights reserved.</p>
+                <div className="login-copyright-container">
+                    <p className="login-copyright">&copy; 2026 TaskFlow. All rights reserved.</p>
                 </div>
             </div>
 
-            <div style={{ flex: 1.2, backgroundColor: '#000', padding: '4rem', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }} className="hide-mobile">
-                <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)', borderRadius: '50%' }}></div>
-                <div style={{ position: 'absolute', bottom: '10%', left: '10%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%)', borderRadius: '50%' }}></div>
+            <div className="login-visual-side hide-mobile">
+                <div className="visual-circle-1"></div>
+                <div className="visual-circle-2"></div>
 
-                <div style={{ marginTop: 'auto', position: 'relative', zIndex: 1 }}>
-                    <div style={{ width: '64px', height: '4px', backgroundColor: '#3b82f6', marginBottom: '2.5rem' }}></div>
-                    <h2 style={{ fontSize: '3.75rem', color: '#fff', fontWeight: '800', lineHeight: 1, letterSpacing: '-0.03em', marginBottom: '2rem' }}>
-                        Manage the <br /> <span style={{ color: '#3b82f6' }}>Impossible.</span>
+                <div className="visual-content">
+                    <div className="visual-accent"></div>
+                    <h2 className="visual-headline">
+                        Manage the <br /> <span className="visual-accent-text">Impossible.</span>
                     </h2>
-                    <p style={{ color: '#9ca3af', fontSize: '1.25rem', maxWidth: '480px', lineHeight: 1.6, marginBottom: '3rem' }}>
+                    <p className="visual-description">
                         Experience the next generation of productivity. Distraction-free, powerful, and truly minimalistic.
                     </p>
 
-                    <div style={{ display: 'flex', gap: '1rem' }}>
+                    <div className="rating-container">
                         {[1, 2, 3, 4, 5].map(i => <Star key={i} size={20} fill="#3b82f6" color="#3b82f6" />)}
-                        <span style={{ color: '#fff', fontWeight: '600', marginLeft: '0.5rem' }}>5.0 Rating</span>
+                        <span className="rating-text">5.0 Rating</span>
                     </div>
                 </div>
             </div>
@@ -120,3 +121,4 @@ const Login = () => {
 };
 
 export default Login;
+

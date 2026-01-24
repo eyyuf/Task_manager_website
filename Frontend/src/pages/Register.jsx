@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
 import { UserPlus, ArrowRight } from 'lucide-react';
+import '../styles/Register.css';
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -26,25 +27,25 @@ const Register = () => {
     };
 
     return (
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f9fafb', padding: '2rem' }}>
-            <div className="card animate-up" style={{ width: '100%', maxWidth: '440px', border: 'none', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.08)' }}>
-                <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-                    <div style={{ width: '64px', height: '64px', backgroundColor: '#eff6ff', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: '#3b82f6' }}>
+        <div className="register-container">
+            <div className="card register-card animate-up">
+                <div className="register-header">
+                    <div className="register-icon-wrapper">
                         <UserPlus size={32} />
                     </div>
-                    <h1 style={{ fontSize: '1.75rem', fontWeight: '800', marginBottom: '0.5rem' }}>Create Account</h1>
-                    <p style={{ color: '#6b7280' }}>Join TaskFlow and start getting things done.</p>
+                    <h1 className="register-title">Create Account</h1>
+                    <p className="register-subtitle">Join TaskFlow and start getting things done.</p>
                 </div>
 
                 {error && (
-                    <div style={{ backgroundColor: '#fef2f2', border: '1px solid #fee2e2', color: '#dc2626', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', fontSize: '0.875rem' }}>
+                    <div className="register-error">
                         {error}
                     </div>
                 )}
 
                 <form onSubmit={handleSubmit}>
-                    <div style={{ marginBottom: '1.25rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600' }}>Full Name</label>
+                    <div className="form-group">
+                        <label className="form-label">Full Name</label>
                         <input
                             type="text"
                             placeholder="Elon Musk"
@@ -54,8 +55,8 @@ const Register = () => {
                         />
                     </div>
 
-                    <div style={{ marginBottom: '1.25rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600' }}>Email Address</label>
+                    <div className="form-group">
+                        <label className="form-label">Email Address</label>
                         <input
                             type="email"
                             placeholder="name@company.com"
@@ -65,8 +66,8 @@ const Register = () => {
                         />
                     </div>
 
-                    <div style={{ marginBottom: '2rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: '600' }}>Password</label>
+                    <div className="form-group-last">
+                        <label className="form-label">Password</label>
                         <input
                             type="password"
                             placeholder="••••••••"
@@ -76,14 +77,14 @@ const Register = () => {
                         />
                     </div>
 
-                    <button type="submit" className="btn-black" style={{ width: '100%', padding: '0.875rem' }} disabled={loading}>
+                    <button type="submit" className="btn-black register-btn" disabled={loading}>
                         <span>{loading ? 'Designing account...' : 'Get Started'}</span>
                         {!loading && <ArrowRight size={18} />}
                     </button>
                 </form>
 
-                <p style={{ marginTop: '2rem', textAlign: 'center', color: '#6b7280', fontSize: '0.875rem' }}>
-                    Already a user? <Link to="/login" style={{ color: '#000', fontWeight: '700', textDecoration: 'underline', textUnderlineOffset: '4px' }}>Sign in here</Link>
+                <p className="register-footer">
+                    Already a user? <Link to="/login" className="register-link">Sign in here</Link>
                 </p>
             </div>
         </div>
@@ -91,3 +92,4 @@ const Register = () => {
 };
 
 export default Register;
+
