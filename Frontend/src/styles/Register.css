@@ -1,44 +1,45 @@
-.register-container {
+.register-page {
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f9fafb;
-    padding: 2rem;
+    background-color: #ffffff;
 }
 
-.register-card {
+.register-form-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    z-index: 10;
+}
+
+.register-main-content {
+    max-width: 420px;
     width: 100%;
-    max-width: 440px;
-    border: none;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+    margin: auto;
 }
 
 .register-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
 }
 
-.register-icon-wrapper {
-    width: 64px;
-    height: 64px;
-    background-color: #eff6ff;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
+.register-icon-container {
+    margin-bottom: 1.5rem;
     color: #3b82f6;
 }
 
 .register-title {
-    font-size: 1.75rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
+    font-size: 3rem;
+    font-weight: 950;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.06em;
+    color: #000;
+    line-height: 0.95;
 }
 
 .register-subtitle {
     color: #6b7280;
+    font-size: 1.125rem;
+    font-weight: 400;
 }
 
 .register-error {
@@ -46,41 +47,148 @@
     border: 1px solid #fee2e2;
     color: #dc2626;
     padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
     font-size: 0.875rem;
+    font-weight: 500;
 }
 
 .form-group {
-    margin-bottom: 1.25rem;
-}
-
-.form-group-last {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-label {
     display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 600;
+    margin-bottom: 0.625rem;
+    font-size: 0.8125rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+}
+
+.register-input {
+    width: 100%;
+    height: 56px;
+    border-radius: 14px !important;
+    border: 1px solid #e5e7eb !important;
+    padding: 0 1.5rem !important;
+    font-size: 1rem !important;
+    background: #fdfdfd !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.register-input:focus {
+    background: #fff !important;
+    border-color: #000 !important;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05) !important;
 }
 
 .register-btn {
     width: 100%;
-    padding: 0.875rem;
+    height: 56px;
+    background: #000 !important;
+    color: #fff !important;
+    border-radius: 14px !important;
+    font-weight: 800 !important;
+    font-size: 1rem !important;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 .register-footer {
-    margin-top: 2rem;
+    margin-top: 3rem;
     text-align: center;
     color: #6b7280;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
 }
 
 .register-link {
     color: #000;
-    font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    font-weight: 800;
+    text-decoration: none;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 2px;
+}
+
+.register-visual-side {
+    flex: 1.2;
+    background-color: #3b82f6;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    color: #fff;
+}
+
+.visual-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+    background-size: 40px 40px;
+}
+
+.visual-circle {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -100px;
+    right: -100px;
+}
+
+.visual-content {
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.visual-title {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    margin-bottom: 2rem;
+}
+
+.visual-desc {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    max-width: 440px;
+    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+}
+
+.benefit-dot {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
 }

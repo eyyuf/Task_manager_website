@@ -1,7 +1,13 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import '../styles/Components.css';
 
 const Footer = () => {
+    const location = useLocation();
+    const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+
+    if (isAuthPage) return null;
+
     return (
         <footer className="footer">
             <div className="container">
@@ -18,4 +24,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
